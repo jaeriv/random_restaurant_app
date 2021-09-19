@@ -1,0 +1,151 @@
+body{
+    margin:0;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+.main-content{
+    margin-top: 3%;
+}
+
+.add-edit-table{
+    /*padding: 30px 20px;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.add-edit-button{
+    padding: 30px 20px;
+}
+
+.btn-circle.btn-xl {
+            width: 200px;
+            height: 200px;
+            padding: 10px 16px;
+            border-radius: 100px;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-align: center;
+            background-color: rgb(281, 57, 50) !important;
+            box-shadow: 4px 0 lightgray;
+
+        }
+
+.btn-circle.btn-xl:hover {
+            background-color: rgb(220, 76, 52) !important;
+            box-shadow: 5px 0 darkgray;
+        }
+
+.btn-outline-primary{
+    border-color: black !important;
+    color: black !important;
+    letter-spacing: 2px;
+}
+
+.btn-outline-primary:hover{
+    background-color: rgb(220, 76, 52) !important;
+    color: white !important;
+    box-shadow: 3px 2px darkgray;
+}
+
+
+.form-content{
+    margin-top: 12%;
+    padding: 0 200px;
+    /*margin-bottom: 10px;*/
+}
+
+.home-link{
+    color: black;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+
+.home-link:hover{
+    color:rgb(220, 76, 52);
+}
+
+.submit-div{
+    padding-top: 30px;
+    padding-bottom: 5px;
+}
+.submit-button{
+    background-color: rgb(281, 57, 50)
+}
+
+.submit-button:hover{
+    background-color: rgb(220, 76, 52);
+    box-shadow: 3px 2px darkgray;
+}
+
+.form-group{
+    padding-top: 10px;
+}
+
+.restaurant-table{
+        margin-left: auto;
+        margin-right: auto;
+        /*vertical-align: middle;*/
+        /*text-align: center;*/
+}
+
+.restaurant-table-data{
+    /*vertical-align: middle;*/
+    /*text-align: center;*/
+    padding: 7px;
+
+}
+
+.restaurant-links{
+    color: black;
+}
+
+.restaurant-links:hover{
+    color: rgb(220, 76, 52);
+}
+
+.rating-form{
+    display: inline-block;
+}
+
+.checked {
+  color: orange;
+}
+
+.zip-code-form{
+    margin-top: 14%;
+    padding: 0 400px;
+}
+
+
+
+.zip-search-bar{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    text-align: center;
+    font-size: 20px;
+    /*-webkit-appearance:none;*/
+    box-shadow: none !important;
+}
+
+.random-home-link{
+    color: black;
+    letter-spacing: 1px;
+    font-size: 13px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.random-home-link:hover{
+    color:rgb(220, 76, 52);
+}
+
+.error-message{
+    /*padding-top: 10px;*/
+    font-style: italic;
+}
+
+.yelp-logo{
+    width: 100px;
+}

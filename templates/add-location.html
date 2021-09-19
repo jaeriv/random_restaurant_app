@@ -1,0 +1,84 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div class="form-content">
+        <div class="card text-center">
+          <div class="card-header">
+            Add a Place
+          </div>
+          <div class="card-body">
+            <form class="form-body" action="{{ url_for("add") }}" method="POST">
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="restaurant-name">*Restaurant Name</label>
+                  <input name="restaurant-name" type="text" class="form-control" id="restaurant-name" placeholder="" required>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="category-input">*Category</label>
+                  <select name="category" id="category-input" class="form-control" required>
+                    <option selected></option>
+                    {% for category in categories %}
+                        <option>{{ category }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="rating-input">*Rating (1=terrible 5=fantastic)</label>
+                  <select name="rating" id="rating-input" class="form-control" required>
+                    <option selected></option>
+                    {% for rating in ratings %}
+                        <option>{{ rating }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label for="contact">Contact (Format: 123-456-7891)</label>
+                  <input name="contact" type="tel" class="form-control" id="contact" placeholder="" pattern="^\d{3}-\d{3}-\d{4}$">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="added-by">Added By</label>
+                  <input name="added-by" type="text" class="form-control" id="added-by" placeholder="">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="web-url">Website</label>
+                  <input name="web-url" type="text" class="form-control" id="web-url" placeholder="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                      <label for="inputCity">City</label>
+                      <input name="city" type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputState">State</label>
+                      <select name="state" id="inputState" class="form-control">
+                        <option selected>Select State...</option>
+                          {% for state in states %}
+                            <option>{{ state }}</option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <label for="inputZip">Zip (5 digit)</label>
+                      <input name="zip" type="text" class="form-control" id="inputZip" pattern="^\d{5}$">
+                    </div>
+                  </div>
+                <div class="submit-div">
+                    <button type="submit" class="btn btn-primary submit-button">Submit</button>
+                </div>
+                <p>* Indicates a required field.</p>
+            </form>
+          </div>
+          <div class="card-footer text-muted">
+            <a href="{{url_for("main")}}" class="home-link">Go Back</a>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}

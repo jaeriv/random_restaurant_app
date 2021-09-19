@@ -1,0 +1,68 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div class="zip-code-form">
+        <form class="form-body" action="{{ url_for("random_restaurant") }}" method="POST">
+            <button type="submit" class="btn btn-primary btn-circle btn-xl">Something<br>Random<br>To Eat</button>
+            <div class="form-group">
+                <label for="inputZipCode"></label>
+                <input name="zip-code" type="text" class="zip-search-bar form-control" id="inputZipCode" placeholder="Enter ZIP Code" pattern="^\d{5}$" required>
+            </div>
+            <a href="{{url_for("main")}}" class="random-home-link">Go Back</a>
+            <p class="error-message">{{ error_message }}</p>
+        </form>
+            {% if rating != "none" %}
+            <table class="restaurant-table">
+            <tr>
+                <td class="restaurant-table-data"><h3>{{ name }}</h3></td>
+            </tr>
+            <tr>
+
+                <td>
+                    {% if rating == 5 %}
+                    <img alt="Yelp Rating" src="static/img/regular_5.png">
+                    {% elif rating >= 4.5 and rating < 5 %}
+                    <img alt="Yelp Rating" src="static/img/regular_4_half.png">
+                    {% elif rating >= 4 and rating < 4.5 %}
+                    <img alt="Yelp Rating" src="static/img/regular_4.png">
+                    {% elif rating >= 3.5 and rating < 4 %}
+                    <img alt="Yelp Rating" src="static/img/regular_3_half.png">
+                    {% elif rating >= 3 and rating < 3.5 %}
+                    <img alt="Yelp Rating" src="static/img/regular_3.png">
+                    {% elif rating >= 2.5 and rating < 3 %}
+                    <img alt="Yelp Rating" src="static/img/regular_2_half.png">
+                    {% elif rating >= 2 and rating < 2.5 %}
+                    <img alt="Yelp Rating" src="static/img/regular_2.png">
+                    {% elif rating >= 1.5 and rating < 2 %}
+                    <img alt="Yelp Rating" src="static/img/regular_1_half.png">
+                    {% elif rating >= 1 and rating < 1 %}
+                    <img alt="Yelp Rating" src="static/img/regular_1.png">
+                    {% else %}
+                    <img alt="Yelp Rating" src="static/img/regular_0.png">
+                    {%  endif %}
+                </td>
+
+            </tr>
+            <tr>
+                <td class="restaurant-table-data">{{ category }}</td>
+            </tr>
+            <tr>
+                <td class="restaurant-table-data"><a class="restaurant-links" target="_blank" rel="noopener noreferrer" href="{{ website }}"><img alt="Yelp Link" class="yelp-logo" src="static/img/yelp_logo.png"></a></td>
+            </tr>
+            <tr>
+                <td class="restaurant-table-data">{{ phone_number }}</td>
+            </tr>
+            <tr>
+                <td class="restaurant-table-data"><a class="restaurant-links" target="_blank" rel="noopener noreferrer" href="https://maps.google.com/?q={{ address }}">{{ address }}</a></td>
+            </tr>
+            <tr>
+                <td><hr></td>
+            </tr>
+        </table>
+        {% endif %}
+
+    </div>
+
+
+
+{% endblock %}

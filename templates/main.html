@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="/static/styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+{% block content %}
+    <div class="main-content">
+
+            <button onclick="window.location.reload();" type="button" class="btn btn-primary btn-circle btn-xl">Find<br>Something<br>To Eat</button>
+
+            <table class="add-edit-table">
+                <tr>
+                    <td class="add-edit-button"><a href="{{ url_for("add") }}" class="btn btn-outline-primary">add</a></td>
+                    <td class="add-edit-button"><a href="{{ url_for("random_restaurant") }}" class="btn btn-outline-primary">ran</a></td>
+                </tr>
+            </table>
+
+            {% if locations | length > 0 %}
+                <table class="restaurant-table">
+                <tr>
+                    <td colspan="2"><hr></td>
+                </tr>
+                <tr>
+                    <td class="restaurant-table-data" colspan="2"><h3>{{ random_location["name"] }}</h3></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="restaurant-table-data">{% if random_location["rating"] == '1' %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    {% elif random_location["rating"] == '2'%}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    {% elif random_location["rating"] == '3' %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    {% elif random_location["rating"] == '4' %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                    {% elif random_location["rating"] == '5' %}
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    {% endif %}</td>
+                </tr>
+                <tr>
+                    <td class="restaurant-table-data">Category: {{ random_location["category"] }}</td>
+                    <td class="restaurant-table-data">Added By: {{ random_location["added_by"] }}</td>
+                </tr>
+                <tr>
+                    <td class="restaurant-table-data" colspan="2"><a  class="restaurant-links" href="tel:{{ random_location["contact"] }}">{{ random_location["contact"] }}</a></td>
+                </tr>
+                <tr>
+                    <td class="restaurant-table-data" colspan="2"><a class="restaurant-links" target="_blank" rel="noopener noreferrer" href="{{ random_location["website"] }}">{{ random_location["website"] }}</a></td>
+                </tr>
+                <tr>
+                    <td class="restaurant-table-data" colspan="2"><a class="restaurant-links" target="_blank" rel="noopener noreferrer" href="https://maps.google.com/?q={{ random_location["address"] }} {{ random_location["city"] }}, {{ random_location["state"] }} {{ random_location["zip_code"] }}">{{ random_location["address"] }} {{ random_location["city"] }} {{ random_location["state"] }} {{ random_location["zip_code"] }}</a></td>
+                </tr>
+                <tr>
+                    <td class="restaurant-table-data" colspan="2"><a href="{{ url_for("edit", id=random_location.id) }}" class="restaurant-links">Update Rating</a></td>
+                </tr>
+                <tr>
+                    <td class="restaurant-table-data" colspan="2"><a href="{{ url_for("delete", id=random_location.id) }}" class="restaurant-links">Delete Restaurant</a></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><hr></td>
+                </tr>
+                </table>
+            {% else %}
+                <p>Sorry, there are no locations to choose from.</p>
+            {% endif %}
+
+    </div>
+{% endblock %}
+</body>
+</html>

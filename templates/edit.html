@@ -1,0 +1,34 @@
+{% extends "main.html" %}
+
+{% block content %}
+    <div class="form-content">
+        <div class="card text-center">
+          <div class="card-header">
+            Update Rating
+          </div>
+          <div class="card-body">
+            <form class="form-body" action="{{ url_for("edit") }}" method="POST">
+            <p>You are updating the rating for: {{ restaurant.name }}</p>
+            <p>Current rating: {{ restaurant.rating }}</p>
+                <div class="form-group col-md-4 rating-form">
+                  <label for="rating-input">*Rating (1=terrible 5=fantastic)</label>
+                  <input hidden="hidden" name="id" value="{{restaurant.id}}">
+                  <select name="updated-rating" id="rating-input" class="form-control" required>
+                    <option selected></option>
+                    {% for rating in ratings %}
+                        <option>{{ rating }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="submit-div">
+                    <button type="submit" class="btn btn-primary submit-button">Update Rating</button>
+                </div>
+            </form>
+          </div>
+          <div class="card-footer text-muted">
+            <a href="{{url_for("main")}}" class="home-link">Go Back</a>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}
